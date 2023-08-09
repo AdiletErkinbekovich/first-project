@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+//обнуление стилей по умолчанию
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+}
+li {
+  list-style: none;
+}
+//глобальный контейнер
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+//переменные
+$Inter: 'Inter', sans-serif;
+$red: red;
+$roboto: 'Roboto', sans-serif;
+$sb: space-between;
+//миксины
+@mixin text($family, $style, $weight, $size, $lheight, $color) {
+  font-family: $family;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lheight;
+  color: $color;
+}
+@mixin flex($direction, $align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+}
+@mixin flexjc($direction, $align, $jcontent) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $jcontent;
+}
+// @include text($Inter,normal,700 ,20px,24.2,#000000)
+
+body {
+  padding: 60px;
+  background-color: #e7f6ff;
+  font-family: Inter, sans-serif;
+}
+
+.wrapper {
+  padding: 60px;
+}
+
+// HEADER START
+header {
+  .container {
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid#EAEAEA;
+  }
+  .headerLeft {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 10px;
+    }
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    @include text($Inter, normal, 700, 20px, 1, #000000);
+  }
+  .subtitle {
+    font-family: inter;
+    font-weight: 400;
+    font-size: 14px;
+    color: #9d9d9d;
+    margin-top: 4px;
+    opacity: 5;
+  }
+
+  .headerRight {
+    display: flex;
+    .cart {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+
+      p {
+        font-size: 14px;
+        margin-left: 4px;
+        color: #5c5c5c;
+        font-family: $Inter;
+      }
+    }
+    .favourite {
+      margin-right: 20px;
+    }
+  }
+}
+
+// HEADER END
+
+// MAIN START
+main {
+  .searchBlock {
+    .container {
+      background-color: #fff;
+      padding: 50px 8.5% 0 7.5%;
+    }
+    .mainTitle {
+      @include flexjc(row, center, space-between);
+      .sneakersTitle {
+        @include text(Inter, normal, 700, 32px, 38.73px, #000000);
+      }
+      .sneakersSearch {
+        border: 1px solid #f3f3f3;
+        padding: 8px 15px;
+        background-color: #fff;
+        border-radius: 10px;
+        opacity: 5;
+        label {
+          @include flex(row, center);
+        }
+
+        img {
+          margin-right: 10px;
+          opacity: 5;
+          cursor: pointer;
+        }
+        .searchInput {
+          border: none;
+          width: 200px;
+          opacity: 5;
+          font-family: $Inter;
+        }
+      }
+    }
+  }
+  .sneakersCards {
+    .container {
+      background-color: #fff;
+      padding: 60px 60px 60px 100px;
+      border-radius: 0 0 30px 30px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    // CARD START
+    .card {
+      border: 1px solid #f3f3f3;
+      border-radius: 40px;
+      width: 210px;
+      height: 260px;
+      @include flexjc(column, center, space-between);
+      padding: 10px 25px 25px 25px;
+      margin-right: 60px;
+      margin-bottom: 40px;
+      transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+      }
+      p {
+        @include text(Inter, normal, 400, 14px, 16px, #000);
+      }
+      .cardImage {
+        position: relative;
+      }
+      .cardImg {
+        width: 133px;
+        height: 112px;
+      }
+      .favourited {
+        position: absolute;
+        top: 11px;
+        left: -16px;
+        cursor: pointer;
+      }
+
+      .cardPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 159px;
+
+        .priceWrapper {
+          @include flex(column, flex-start);
+          p {
+            @include text(Inter, normal, 500, 11px, 17px, #bdbdbd);
+            text-transform: uppercase;
+          }
+          b {
+            @include text(Inter, normal, 700, 14px, 16px, #000000);
+          }
+        }
+        img {
+          width: 32px;
+          height: 32px;
+          margin: 0;
+          cursor: pointer;
+        }
+        b {
+          @include text(Inter, normal, 700, 14px, 16px, #000);
+        }
+      }
+    }
+
+    // CARD END
+  }
+ 
+}
+.overlay{
+  z-index: 11;
+
+  width: 100%;
+  height: 150%;
+  background-color: #000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+  .drawer{
+    padding: 30px;
+    z-index: 12;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 385px;
+    height: 150%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .cartItems{
+      height: 100%;
+    }
+    .drawerTitle{
+      p{
+        @include text($Inter,normal ,700 ,24px ,29.05px ,#000 )
+
+      }
+      display: flex;
+      align-items: center;
+      justify-content:space-between;
+        margin-bottom: 30px;
+      img{
+        transition:0.4s;
+        opacity: 0.4;
+        cursor: pointer;
+        &:hover{
+          opacity: 1;
+        }
+      }
+
+    }
+    .cartItem{
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid #f3f3f3;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+      }
+      .cartItemImg{
+        width: 70px;
+        height: 70px;
+        margin-right: 20px;
+      }
+      .cartItemText{
+        @include flex(column,flex-start  )
+
+        .cartItemTitle{
+          @include text($Inter,normal ,400 ,14px ,16px ,#000 )
+          margin-bottom: 10px;
+        }
+        .cartItemPrice{
+          @include text($Inter,normal ,700 ,14px ,16px ,#000 )
+        }
+      }
+      .cartItemButton{
+        cursor: pointer;
+        opacity: 0.4;
+        transition:0.4s;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+    .total{
+      ul {
+        margin-bottom: 20px;
+        li{
+          @include flex(row,center )
+          justify-content: space-between;
+
+          .totalCost .tax {
+            @include text($Inter,normal ,400 ,16px ,19px ,#000000 )
+          }
+          .dashed {
+            border-bottom: 1px dashed #dfdfdf;
+            bottom: -7px;
+            width: 167px;
+            position: relative;
+
+
+          }
+          .totalPrice{
+            @include text($Inter,normal ,600 ,16px ,19px ,#000000 )
+
+          }
+          
+        }
+        
+      }
+      .totalButton{
+          @include text($Inter,normal ,600 ,16px ,19px ,#fff )
+          border-radius:18px;
+          padding: 22.5px 95px;
+          background-color:#9DD458;
+          display: flex;  
+          align-items: center; 
+          position: relative;
+          cursor: pointer;
+          transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out ;
+
+          &:hover{
+            transform: translateY(-3px);
+              box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+          }
+          &:hover{
+            img{
+              right: 60px;
+            }
+            }
+          img{
+          position: absolute;
+          right: 69px;
+          transition: right 0.4s ease-in-out;
+
+          
+        } 
+          }
+    }
+    }
+
+// MAIN END

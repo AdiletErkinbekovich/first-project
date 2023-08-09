@@ -1,13 +1,365 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+body {
+  padding: 60px;
+  background-color: #e7f6ff;
+  font-family: Inter, sans-serif;
+}
+
+.wrapper {
+  padding: 60px;
+}
+
+header .container {
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #EAEAEA;
+}
+header .headerLeft {
+  display: flex;
+  align-items: center;
+}
+header .headerLeft img {
+  margin-right: 10px;
+}
+header .text {
+  display: flex;
+  flex-direction: column;
+}
+header .title {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: #000000;
+}
+header .subtitle {
+  font-family: inter;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9d9d9d;
+  margin-top: 4px;
+  opacity: 5;
+}
+header .headerRight {
+  display: flex;
+}
+header .headerRight .cart {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+header .headerRight .cart p {
+  font-size: 14px;
+  margin-left: 4px;
+  color: #5c5c5c;
+  font-family: "Inter", sans-serif;
+}
+header .headerRight .favourite {
+  margin-right: 20px;
+}
+
+main .searchBlock .container {
+  background-color: #fff;
+  padding: 50px 8.5% 0 7.5%;
+}
+main .searchBlock .mainTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+main .searchBlock .mainTitle .sneakersTitle {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38.73px;
+  color: #000000;
+}
+main .searchBlock .mainTitle .sneakersSearch {
+  border: 1px solid #f3f3f3;
+  padding: 8px 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  opacity: 5;
+}
+main .searchBlock .mainTitle .sneakersSearch label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+main .searchBlock .mainTitle .sneakersSearch img {
+  margin-right: 10px;
+  opacity: 5;
+  cursor: pointer;
+}
+main .searchBlock .mainTitle .sneakersSearch .searchInput {
+  border: none;
+  width: 200px;
+  opacity: 5;
+  font-family: "Inter", sans-serif;
+}
+main .sneakersCards .container {
+  background-color: #fff;
+  padding: 60px 60px 60px 100px;
+  border-radius: 0 0 30px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+main .sneakersCards .card {
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  width: 210px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px 25px 25px;
+  margin-right: 60px;
+  margin-bottom: 40px;
+  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+main .sneakersCards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+}
+main .sneakersCards .card p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+}
+main .sneakersCards .card .cardImage {
+  position: relative;
+}
+main .sneakersCards .card .cardImg {
+  width: 133px;
+  height: 112px;
+}
+main .sneakersCards .card .favourited {
+  position: absolute;
+  top: 11px;
+  left: -16px;
+  cursor: pointer;
+}
+main .sneakersCards .card .cardPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 159px;
+}
+main .sneakersCards .card .cardPrice .priceWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+main .sneakersCards .card .cardPrice .priceWrapper p {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 17px;
+  color: #bdbdbd;
+  text-transform: uppercase;
+}
+main .sneakersCards .card .cardPrice .priceWrapper b {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+main .sneakersCards .card .cardPrice img {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  cursor: pointer;
+}
+main .sneakersCards .card .cardPrice b {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000;
+}
+main .overlay {
+  display: flex;
+}
+main .overlay .drawer .drawerTitle {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29.05;
+  color: #000;
+}/*# sourceMappingURL=index.css.map */
