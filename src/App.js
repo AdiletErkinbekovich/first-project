@@ -1,41 +1,40 @@
 import './App.css';
 import Card from './components/Card';
 import Header from './components/Header';
-import CartItem from './components/CartItem'
+import React from 'react';
+import Overlay from './components/Overlay.js';
+
+const sneakers = [
+  {
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 1763,
+    imageUrl: '/images/image 1.jpg',
+  },
+  {
+    title: 'Мужские Кроссовки Nike LeBron XVIII',
+    price: 4000,
+    imageUrl: '/images/image 2.jpg',
+  },
+  {
+    title: 'Мужские Кроссовки Nike Lebron Low',
+    price: 3500,
+    imageUrl: '/images/image 3.jpg',
+  },
+  {
+    title: 'Мужские Кроссовки Nike Lebron Low',
+    price: 3600,
+    imageUrl: '/images/image 7.jpg',
+  },
+];
+
 function App() {
+  const [clickedCart, setClickedCart] = React.useState(false);
+
   return (
-    
     <div className="wrapper ">
-      <div className="overlay">
-      </div>
-          <div className="drawer">
-            <div className='drawerTitle'><p>Корзина</p> <img src="./images/cartItemButton.svg" alt="button" /></div>
-            <div className="cartItems">
-              <CartItem/>
-              <CartItem/>
-              <CartItem/>
-              <CartItem/>
-            </div>
-            <div className='total'>
-              <ul>
-                <li>
-                  <p className='totalCost'>Итого :  </p>
-                  <div className='dashed'> </div>
-                  <p className='totalPrice'>21 498руб.</p>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <p className='tax'>Налог 5% :  </p>
-                  <div className='dashed' > </div>
-                  <p className='totalPrice'>1074 руб.</p>
-                </li>
-              </ul>
-              <button type='submit' className='totalButton'>Оформить заказ <img src="/images/totalButton.svg" alt="next" /></button>
-            </div>
-          </div>
-       
-      <Header />
+      {clickedCart && <Overlay closingCart={() => setClickedCart(false)} />}
+      <Header clickingCart={() => setClickedCart(true)} />
+
       <main>
         <div className="searchBlock">
           <div className="container">
@@ -50,23 +49,15 @@ function App() {
             </div>
           </div>
         </div>
-    
+
         <div className="sneakersCards">
           <div className="container">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {sneakers.map((obj) => (
+              <Card title={obj.title} price={obj.price + ' руб.'} imageUrl={obj.imageUrl} />
+            ))}
           </div>
         </div>
-        
-        
       </main>
-      
     </div>
   );
 }

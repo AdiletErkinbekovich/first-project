@@ -1,0 +1,79 @@
+@mixin text($family, $style, $weight, $size, $lheight, $color) {
+  font-family: $family;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lheight;
+  color: $color;
+}
+@mixin flex($direction, $align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+}
+@mixin flexjc($direction, $align, $jcontent) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $jcontent;
+}
+
+.card {
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  width: 210px;
+  height: 260px;
+  @include flexjc(column, center, space-between);
+  padding: 10px 25px 25px 25px;
+  margin-right: 60px;
+  margin-bottom: 40px;
+  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  }
+  p {
+    @include text(Inter, normal, 400, 14px, 16px, #000);
+  }
+  .cardImage {
+    position: relative;
+  }
+  .cardImg {
+    width: 133px;
+    height: 112px;
+  }
+  .favourited {
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    cursor: pointer;
+  }
+
+  .cardPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 159px;
+
+    .priceWrapper {
+      @include flex(column, flex-start);
+      p {
+        @include text(Inter, normal, 500, 11px, 17px, #bdbdbd);
+        text-transform: uppercase;
+      }
+      b {
+        @include text(Inter, normal, 700, 14px, 16px, #000000);
+      }
+    }
+    img {
+      width: 32px;
+      height: 32px;
+      margin: 0;
+      cursor: pointer;
+    }
+    b {
+      @include text(Inter, normal, 700, 14px, 16px, #000);
+    }
+  }
+}
+
