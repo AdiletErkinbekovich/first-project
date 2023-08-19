@@ -1,20 +1,30 @@
+import CartItem from './CartItem/index.js';
+import React from 'react';
+
 function Overlay(props) {
+  const [cartItems, setCartItems] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('https://64e1187450713530432cf230.mockapi.io/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setCartItems(json);
+      });
+  });
+
   return (
-    <div className="overlay">
+    <div onClick={props.closingCart} className="overlay">
       <div className="drawer">
         <div className="drawerTitle">
           <p>Корзина</p>
           <img onClick={props.closingCart} src="./images/cartItemButton.svg" alt="button" />
         </div>
         <div className="cartItems">
-          <div className="cartItem">
-            <img className="cartItemImg" src="/images/image 3.jpg" alt="sneakers" />
-            <div className="cartItemText">
-              <p className="cartItemTitle">Мужские Кроссовки Nike Air Max 270</p>
-              <p className="cartItemPrice">13 900руб.</p>
-            </div>
-            <img className="cartItemButton" src="/images/cartItemButton.svg" alt="button" />
-          </div>
+          {cartItems.map((obj) => (
+            <CartItem title={obj.title} price={obj.price + ' руб.'} imageUrl={obj.imageUrl} />
+          ))}
         </div>
         <div className="total">
           <ul>

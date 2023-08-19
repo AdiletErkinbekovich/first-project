@@ -4,31 +4,19 @@ import Header from './components/Header';
 import React from 'react';
 import Overlay from './components/Overlay.js';
 
-const sneakers = [
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 1763,
-    imageUrl: '/images/image 1.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike LeBron XVIII',
-    price: 4000,
-    imageUrl: '/images/image 2.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Lebron Low',
-    price: 3500,
-    imageUrl: '/images/image 3.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Lebron Low',
-    price: 3600,
-    imageUrl: '/images/image 7.jpg',
-  },
-];
-
 function App() {
+  const [items, setItems] = React.useState([]);
   const [clickedCart, setClickedCart] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://64e1187450713530432cf230.mockapi.io/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      });
+  });
 
   return (
     <div className="wrapper ">
@@ -52,7 +40,7 @@ function App() {
 
         <div className="sneakersCards">
           <div className="container">
-            {sneakers.map((obj) => (
+            {items.map((obj) => (
               <Card title={obj.title} price={obj.price + ' руб.'} imageUrl={obj.imageUrl} />
             ))}
           </div>

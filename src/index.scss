@@ -314,9 +314,9 @@ main {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   .cartItems {
-    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
   }
   .drawerTitle {
     p {
@@ -335,42 +335,7 @@ main {
       }
     }
   }
-  .cartItem {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border: 1px solid #f3f3f3;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    transition:
-      transform 0.4s ease-in-out,
-      box-shadow 0.3s ease-in-out;
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
-    }
-    .cartItemImg {
-      width: 70px;
-      height: 70px;
-      margin-right: 20px;
-    }
-    .cartItemText {
-      @include flex(column, flex-start) .cartItemTitle {
-        @include text($Inter, normal, 400, 14px, 16px, #000) margin-bottom: 10px;
-      }
-      .cartItemPrice {
-        @include text($Inter, normal, 700, 14px, 16px, #000);
-      }
-    }
-    .cartItemButton {
-      cursor: pointer;
-      opacity: 0.4;
-      transition: 0.4s;
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
+
   .total {
     ul {
       margin-bottom: 20px;
