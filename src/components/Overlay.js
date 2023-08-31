@@ -1,20 +1,22 @@
-function Overlay(props) {
+function Overlay({ items = [], closingCart }) {
   return (
     <div className="overlay">
       <div className="drawer">
         <div className="drawerTitle">
           <p>Корзина</p>
-          <img onClick={props.closingCart} src="./images/cartItemButton.svg" alt="button" />
+          <img onClick={closingCart} src="./images/cartItemButton.svg" alt="button" />
         </div>
         <div className="cartItems">
-          <div className="cartItem">
-            <img className="cartItemImg" src="/images/image 3.jpg" alt="sneakers" />
-            <div className="cartItemText">
-              <p className="cartItemTitle">Мужские Кроссовки Nike Air Max 270</p>
-              <p className="cartItemPrice">13 900руб.</p>
+          {items.map((obj) => (
+            <div className="cartItem">
+              <img className="cartItemImg" src="/images/image 3.jpg" alt="sneakers" />
+              <div className="cartItemText">
+                <p className="cartItemTitle">Мужские Кроссовки Nike Air Max 270</p>
+                <p className="cartItemPrice">13 900руб.</p>
+              </div>
+              <img className="cartItemButton" src="/images/cartItemButton.svg" alt="button" />
             </div>
-            <img className="cartItemButton" src="/images/cartItemButton.svg" alt="button" />
-          </div>
+          ))}
         </div>
         <div className="total">
           <ul>

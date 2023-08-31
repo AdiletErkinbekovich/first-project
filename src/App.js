@@ -16,6 +16,7 @@ function App() {
         setItems(json);
       });
   });
+
   return (
     <div className="wrapper ">
       {clickedCart && <Overlay closingCart={() => setClickedCart(false)} />}
