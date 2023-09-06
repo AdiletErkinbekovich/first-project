@@ -1,0 +1,63 @@
+//переменные
+$Inter: 'Inter', sans-serif;
+$red: red;
+$roboto: 'Roboto', sans-serif;
+$sb: space-between;
+//миксины
+@mixin text($family, $style, $weight, $size, $lheight, $color) {
+  font-family: $family;
+  font-style: $style;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lheight;
+  color: $color;
+}
+@mixin flex($direction, $align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+}
+@mixin flexjc($direction, $align, $jcontent) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $jcontent;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #f3f3f3;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  transition:
+    transform 0.4s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .cartItemImg {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+  }
+  .cartItemText {
+    @include flex(column, flex-start) .cartItemTitle {
+      @include text($Inter, normal, 400, 14px, 16px, #000) margin-bottom: 10px;
+    }
+    .cartItemPrice {
+      @include text($Inter, normal, 700, 14px, 16px, #000);
+    }
+  }
+  .cartItemButton {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: 0.4s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -5,8 +5,8 @@ import React from 'react';
 import Overlay from './components/Overlay.js';
 
 function App() {
-  const [clickedCart, setClickedCart] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const [clickedCart, setClickedCart] = React.useState(false);
   const [cartItems, setCartItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
 
@@ -23,6 +23,16 @@ function App() {
   const addToCart = (obj) => {
     setCartItems((prev) => [...prev, obj]);
   };
+
+  React.useEffect(() => {
+    fetch('https://64e1187450713530432cf230.mockapi.io/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      });
+  });
 
   return (
     <div className="wrapper ">

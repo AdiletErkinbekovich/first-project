@@ -2,7 +2,6 @@ import styles from './Card.module.scss';
 import React from 'react';
 
 function Card({ imageUrl, title, price, clickPlus }) {
-
   const [added, setAdded] = React.useState(false);
 
   const clickedPlus = () => {
@@ -10,17 +9,10 @@ function Card({ imageUrl, title, price, clickPlus }) {
     setAdded(!added);
   };
 
-
- 
-
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
-        <img
-          className={styles.favourited}
-          src={ '/images/favourited.svg' }
-          alt="heart"
-        />
+        <img className={styles.favourited} src={'/images/favourited.svg'} alt="heart" />
         <img className={styles.cardImg} src={imageUrl} alt="sneakers" />
       </div>
       <p className="cardTitle">{title}</p>
