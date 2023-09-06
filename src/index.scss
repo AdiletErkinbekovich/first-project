@@ -262,7 +262,19 @@ main {
         border-radius: 10px;
         opacity: 5;
         label {
+          position: relative;
           @include flex(row, center);
+          .inputValueDelete {
+            position: absolute;
+            transition: 1s;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            right: 0;
+            &:hover {
+              border: 0.4px solid #989797;
+            }
+          }
         }
 
         img {

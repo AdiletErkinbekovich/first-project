@@ -8,6 +8,7 @@ function App() {
   const [clickedCart, setClickedCart] = React.useState(false);
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
 
   React.useEffect(() => {
     fetch('https://64e1187450713530432cf230.mockapi.io/items')
@@ -32,11 +33,30 @@ function App() {
         <div className="searchBlock">
           <div className="container">
             <div className="mainTitle">
-              <h1 className="sneakersTitle">Все кроссовки</h1>
+              <h1 className="sneakersTitle">
+                {searchValue ? `Поиск по "${searchValue}"` : 'Все кроссовки'}
+              </h1>
               <div className="sneakersSearch">
                 <label>
+                  {searchValue && (
+                    <img
+                      onClick={() => setSearchValue('')}
+                      className="inputValueDelete"
+                      src="/images/cartItemButton.svg"
+                      alt="button"
+                    />
+                  )}
                   <img src="../images/searchInput.svg" alt="search" />
-                  <input className="searchInput" placeholder="Поиск..." type="search" />
+
+                  <input
+                    onChange={(event) => {
+                      setSearchValue(event.target.value);
+                    }}
+                    className="searchInput"
+                    placeholder="Поиск..."
+                    type="search"
+                    value={searchValue}
+                  />
                 </label>
               </div>
             </div>
@@ -45,14 +65,16 @@ function App() {
 
         <div className="sneakersCards">
           <div className="container">
-            {items.map((obj) => (
-              <Card
-                clickPlus={addToCart}
-                title={obj.title}
-                price={obj.price + ' руб.'}
-                imageUrl={obj.imageUrl}
-              />
-            ))}
+            {items
+              .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+              .map((obj) => (
+                <Card
+                  clickPlus={addToCart}
+                  title={obj.title}
+                  price={obj.price + ' руб.'}
+                  imageUrl={obj.imageUrl}
+                />
+              ))}
           </div>
         </div>
       </main>
