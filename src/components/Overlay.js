@@ -9,10 +9,10 @@ function Overlay({ items = [], closingCart }) {
         <div className="cartItems">
           {items.map((obj) => (
             <div className="cartItem">
-              <img className="cartItemImg" src="/images/image 3.jpg" alt="sneakers" />
+              <img className="cartItemImg" src={obj.imageUrl} alt="sneakers" />
               <div className="cartItemText">
-                <p className="cartItemTitle">Мужские Кроссовки Nike Air Max 270</p>
-                <p className="cartItemPrice">13 900руб.</p>
+                <p className="cartItemTitle">{obj.title}</p>
+                <p className="cartItemPrice">{obj.price} руб.</p>
               </div>
               <img className="cartItemButton" src="/images/cartItemButton.svg" alt="button" />
             </div>

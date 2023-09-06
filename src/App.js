@@ -7,6 +7,8 @@ import Overlay from './components/Overlay.js';
 function App() {
   const [clickedCart, setClickedCart] = React.useState(false);
   const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+
   React.useEffect(() => {
     fetch('https://64e1187450713530432cf230.mockapi.io/items')
       .then((res) => {
@@ -17,9 +19,13 @@ function App() {
       });
   });
 
+  const addToCart = (obj) => {
+    setCartItems((prev) => [...prev, obj]);
+  };
+
   return (
     <div className="wrapper ">
-      {clickedCart && <Overlay closingCart={() => setClickedCart(false)} />}
+      {clickedCart && <Overlay items={cartItems} closingCart={() => setClickedCart(false)} />}
       <Header clickingCart={() => setClickedCart(true)} />
 
       <main>
@@ -40,7 +46,12 @@ function App() {
         <div className="sneakersCards">
           <div className="container">
             {items.map((obj) => (
-              <Card title={obj.title} price={obj.price + ' руб.'} imageUrl={obj.imageUrl} />
+              <Card
+                clickPlus={addToCart}
+                title={obj.title}
+                price={obj.price + ' руб.'}
+                imageUrl={obj.imageUrl}
+              />
             ))}
           </div>
         </div>
